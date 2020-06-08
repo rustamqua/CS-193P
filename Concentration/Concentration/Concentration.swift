@@ -28,8 +28,8 @@ class Concentration {
 
                 }
                 cards[index].isFaceUp = true
-                if !seenCards.contains(cards[index]){
-                    seenCards.append(cards[index])
+                if !seenCards.contains(cards[exactCard!]){
+                    seenCards.append(cards[exactCard!])
                 }
                 exactCard = nil
             }

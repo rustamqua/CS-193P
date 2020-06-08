@@ -14,6 +14,10 @@ struct Card: Equatable {
     var first: Bool
     static var lastId: Int = 0
     static func == (lhs: Card, rhs: Card) -> Bool{
+        print(lhs.id)
+        print(rhs.id)
+        print(lhs)
+        print(rhs)
         return lhs.id==rhs.id && lhs.first==rhs.first
     }
     init(first: Bool) {

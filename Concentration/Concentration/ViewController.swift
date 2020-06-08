@@ -16,26 +16,27 @@ class ViewController: UIViewController {
     lazy var game = Concentration(cardsNumber: cardsCollection.count/2, emojiSet: GameThemes.themes[self.gameTheme!]!)
     var emojiMap = [Int: String]()
     
-    @IBOutlet var cardsCollection: [UIButton]!
     @IBOutlet weak var FlipsCounter: UILabel!
+    @IBOutlet var cardsCollection: [UIButton]!
     
     @IBAction func newGame(_ sender: UIButton) {
         gameTheme = GameThemes.themes.keys.randomElement()
         game = Concentration(cardsNumber: cardsCollection.count/2, emojiSet: GameThemes.themes[self.gameTheme!]!)
         emojiMap.removeAll()
-        FlipsCounter.text = "Flips: 0"
+        FlipsCounter.text = "Score: 0"
         for button in cardsCollection{
             button.backgroundColor = #colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
             button.setTitle("", for: UIControl.State.normal)
         }
     }
+    
     @IBAction func toggleCard(_ sender: UIButton) {
         if let cardNumber = cardsCollection.firstIndex(of: sender){
             game.chooseCard(at: cardNumber)
             toggleEvent()
-            FlipsCounter.text = "Flips: \(game.score)"
+            FlipsCounter.text = "Score: \(game.score)"
         }
-     }
+    }
     
     func toggleEvent() {
         for i in cardsCollection.indices{
